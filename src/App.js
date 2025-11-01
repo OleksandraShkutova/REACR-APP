@@ -1,24 +1,35 @@
 
-import Header from './components/Header';
-import NewsItem from './components/NewsItem';
-import Counter from './components/Counter';
+//import StopWatch from './components/StopWatch';
 import './App.css';
+import { Component } from 'react';
+import VievPortParams from './components/ViewPortParams';
 
 
-function App() {
-  const isLogin = false;
-  const newsItem = {
-    title: 'Some news',
-    body: 'About this news',
+class App extends Component {
+  constructor(props) {
+    super (props);
+
+    this.state = {
+      isVisibal: false,
+    }
+  }
+
+  handlerClich = () => {
+    const {isVisibal} = this.state;
+    this.setState ({isVisibal: !isVisibal});
   };
 
-  return (
-    <>
-      <Header isLogin={isLogin} />
-      <NewsItem news={newsItem} />
-      <Counter />
-    </>  
-  );
+  render () {
+    const {isVisibal} = this.state;
+    return (
+      <>
+        {isVisibal && <VievPortParams />}
+        <button onClick={this.handlerClich}>
+          {isVisibal ? 'Unmount' : 'Mount'}
+        </button>
+      </>  
+    );
+  }
 }
 
 export default App;
