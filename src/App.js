@@ -1,8 +1,8 @@
 
-//import StopWatch from './components/StopWatch';
 import './App.css';
 import { Component } from 'react';
-import VievPortParams from './components/ViewPortParams';
+//import VievPortParams from './components/ViewPortParams';
+import StopWatch from './components/StopWatch';
 
 
 class App extends Component {
@@ -23,10 +23,10 @@ class App extends Component {
     const {isVisibal} = this.state;
     return (
       <>
-        {isVisibal && <VievPortParams />}
         <button onClick={this.handlerClich}>
           {isVisibal ? 'Unmount' : 'Mount'}
         </button>
+        {isVisibal && <StopWatch />}
       </>  
     );
   }
